@@ -17,7 +17,7 @@ class functional_test(unittest.TestCase):
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do', header_text)
 
-        input_box = self.browser.find_element_by_id('add_new_item')
+        input_box = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(input_box.get_attribute('placeholder'), 'Enter a to-do item')
 
         # Add a new to-do item 'Buy peacock feathers'
@@ -28,7 +28,7 @@ class functional_test(unittest.TestCase):
         table=self.browser.find_element_by_id('id_list_table')
         rows=table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(rows.text == '1: Buy peacock feathers')
+            any(rows.text == '1: Buy peacock feathers'),'New to-do item didn\'t appear in table'
         )
 
         #Add another to-do item 'Use peacock feathers to make a fly'
